@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+{% extends 'base.html' %}
+
+<head>
+
+  <link rel="stylesheet"  href="styles.css">
+  {% block title %}Application Form{% endblock %}
+
+</head>
+<body>
+
+{% block content %}
+<h1>Job Application Submission Form</h1>
+<p>Please use the form below to enter your first and last name, salary requirements and desired job position</p>
+
+<form action="/application-response" method="POST">
+
+  <label for="firstname">First Name:</label>
+  <input id="firstname" type="text" name="firstname"><br>
+
+  <label for="lastname">Last Name:</label>
+  <input id="lastname" type="text" name="lastname"><br>
+
+  <label for="salary">Salary Requirements</label>
+  <input for id="salary" type="number" name="salary"><br>
+
+
+  <label for="job">Job Position:</label>
+    <select id="job" name="job">
+      {% for job in JOBS %}
+        <option value="{{ job }}">{{ job }}</option>
+      {% endfor %}
+    </select>
+    
+
+  <br>
+  
+  <input type="submit">
+</form>
+
+{% endblock %}
+</body>
+</html>
